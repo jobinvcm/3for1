@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { v4 as uuidv4 } from 'uuid';
-
+import { Injectable, Inject} from '@nestjs/common';
+import { sale } from './sale.entity';
 @Injectable()
 export class SaleService {
-  private sales = [];
-
+  constructor(
+    @Inject('SALE_REPOSITORY')
+    private saleRepository: typeof sale,
+  ) {}
   add(
     name: string,
     rate: number,
@@ -14,7 +15,7 @@ export class SaleService {
     person: string,
     customerName?: string,
   ) {
-    this.sales.push({
+    this.saleRepository.create<sale>({
       itemName: name,
       customerName: customerName,
       rate: rate,
@@ -24,11 +25,10 @@ export class SaleService {
       person: person,
       totalCalculated: rate * quantity * (1 + tax / 100),
       addedTime: new Date().toString(),
-      id: uuidv4(),
     });
   }
 
-  getAll(): any {
-    return [...this.sales];
+  async getAll(): Promise<sale[]> {
+    return await this.saleRepository.findAll<sale>();
   }
 }
