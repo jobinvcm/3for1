@@ -2,31 +2,33 @@ import { Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
-export class PurchaseService {
-  private purchases = [];
+export class SaleService {
+  private sales = [];
 
   add(
     name: string,
-    price: number,
+    rate: number,
     quantity: number,
     total: number,
     tax: number,
     person: string,
+    customerName?: string,
   ) {
-    this.purchases.push({
-      name: name,
-      price: price,
+    this.sales.push({
+      itemName: name,
+      customerName: customerName,
+      rate: rate,
       quantity: quantity,
       totalInput: total,
       tax: tax,
       person: person,
-      totalCalculated: price * quantity * (1 + tax / 100),
+      totalCalculated: rate * quantity * (1 + tax / 100),
       addedTime: new Date().toString(),
       id: uuidv4(),
     });
   }
 
   getAll(): any {
-    return [...this.purchases];
+    return [...this.sales];
   }
 }
