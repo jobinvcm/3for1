@@ -20,6 +20,7 @@ export class PurchaseController {
     @Res() res: Response,
   ) {
     const { name, price, quantity, total, tax, person } = itemDetails;
+    console.log('itemDetails', itemDetails)
     if (name.length && price && quantity && total && tax && person.length) {
       this.purchaseService.add(name, price, quantity, total, tax, person);
       res.status(HttpStatus.CREATED).send();
