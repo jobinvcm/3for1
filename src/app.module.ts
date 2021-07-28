@@ -8,8 +8,10 @@ import { DatabaseModule } from './database.module';
 import { SaleService } from './sale/sale.service';
 import { saleProviders } from './sale/sale.providers';
 import { StockController } from './stock/stock.controller';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 @Module({
-  imports: [PurchaseModule, DatabaseModule, SaleModule],
+  imports: [PurchaseModule, DatabaseModule, SaleModule, AuthModule, UsersModule],
   controllers: [AppController, StockController],
   providers: [AppService, ...PurchaseProviders, SaleService, ...saleProviders],
 })
