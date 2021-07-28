@@ -18,6 +18,7 @@ export class PurchaseService {
     tax: number,
     person: string,
   ) {
+    
     this.purchaseRepository.create<Purchase>({
       name: name,
       price: price,

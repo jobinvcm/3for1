@@ -7,9 +7,10 @@ import { PurchaseProviders } from './purchase/Purchase.providers';
 import { DatabaseModule } from './database.module';
 import { SaleService } from './sale/sale.service';
 import { saleProviders } from './sale/sale.providers';
+import { StockController } from './stock/stock.controller';
 @Module({
   imports: [PurchaseModule, DatabaseModule, SaleModule],
-  controllers: [AppController],
+  controllers: [AppController, StockController],
   providers: [AppService, ...PurchaseProviders, SaleService, ...saleProviders],
 })
 export class AppModule {}
