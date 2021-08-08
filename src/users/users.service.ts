@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
+<<<<<<< HEAD
+=======
+// This should be a real class/interface representing a user entity
+>>>>>>> 3d64bed690f0aca8b006fbd764d424a5ef3b06e8
 export type User = any;
 
 @Injectable()
