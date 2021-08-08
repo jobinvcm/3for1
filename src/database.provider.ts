@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Purchase } from './purchase/Purchase.entity';
-import { sale } from './sale/sale.entity'
-
+import { sale } from './sale/sale.entity';
 
 export const databaseProviders = [
   {
@@ -9,11 +8,11 @@ export const databaseProviders = [
     useFactory: async () => {
       const sequelize = new Sequelize({
         dialect: 'mysql',
-        host: 'localhost',
-        port: 8181,
-        username: 'root',
-        password: 'password',
-        database: 'test',
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT),
+        username: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
       });
       sequelize.addModels([Purchase, sale]);
       await sequelize.sync();
@@ -21,4 +20,3 @@ export const databaseProviders = [
     },
   },
 ];
-

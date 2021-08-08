@@ -1,4 +1,4 @@
-import { sale } from './sale.entity'
+import { sale } from './sale.entity';
 
 export const saleProviders = [
   {

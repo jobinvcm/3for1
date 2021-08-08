@@ -38,8 +38,11 @@ $ npm install
 # development
 $ npm run start
 
-# watch mode
+# watch mode -- Development
 $ npm run start:dev
+
+## Separate terminal
+$ docker-compose -f docker-compose.local.yml up
 
 # production mode
 $ npm run start:prod
